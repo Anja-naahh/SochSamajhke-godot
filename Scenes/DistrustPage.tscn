@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://26x4wcd3x13d"]
+
+[ext_resource type="Texture2D" uid="uid://bdml3rlgpga2k" path="res://Places/rationshop2.jpg" id="1_achc4"]
+[ext_resource type="Script" uid="uid://dmo3f3i8v4n06" path="res://Scripts/distrust_page.gd" id="1_y33ci"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="3_qojqi"]
+[ext_resource type="PackedScene" uid="uid://dyiq1xrruswtg" path="res://Autoloads/coin.tscn" id="5_48076"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="5_oo8jn"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_y33ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-34, -10.7492)
+scale = Vector2(1.88929, 1.18616)
+texture = ExtResource("1_achc4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Text" type="Label" parent="."]
+offset_left = -262.0
+offset_top = -147.0
+offset_right = 385.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.966732, 0.890063, 0.75577, 1)
+theme_override_fonts/font = ExtResource("3_qojqi")
+theme_override_font_sizes/font_size = 40
+text = "But not all Shop keepers are bad : ( ...
+      There must be a better way
+"
+
+[node name="Betterway" type="Button" parent="."]
+offset_left = 57.0
+offset_top = 21.0
+offset_right = 219.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_qojqi")
+theme_override_font_sizes/font_size = 30
+text = "Better way..
+"
+
+[node name="coin" parent="." instance=ExtResource("5_48076")]
+position = Vector2(346, -261)
+scale = Vector2(0.142285, 0.120241)
+
+[node name="click" parent="." instance=ExtResource("5_oo8jn")]
+
+[connection signal="pressed" from="Betterway" to="." method="_on_betterway_pressed"]

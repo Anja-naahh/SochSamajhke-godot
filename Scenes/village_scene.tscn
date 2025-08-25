@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm3ldss2qu36w"]
+
+[ext_resource type="Script" uid="uid://d1tosd4jo54as" path="res://Scripts/village_scene.gd" id="1_4qoqm"]
+[ext_resource type="Texture2D" uid="uid://be7nw7rcllv8m" path="res://Places/RationShop.jpg" id="2_ykkkp"]
+[ext_resource type="Texture2D" uid="uid://cf51tago3f4eb" path="res://Characters/RationScammer.png" id="3_ykkkp"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="4_ykkkp"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="5_4vj7g"]
+
+[node name="Ration_intro" type="Node"]
+script = ExtResource("1_4qoqm")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(30.5, -4.24975)
+scale = Vector2(1.80268, 1.05491)
+texture = ExtResource("2_ykkkp")
+
+[node name="Character" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="RationScammer" type="Sprite2D" parent="."]
+position = Vector2(-285, -8)
+scale = Vector2(0.598, 0.542625)
+texture = ExtResource("3_ykkkp")
+
+[node name="DialogLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.089
+anchor_top = -0.043
+anchor_right = 0.067
+anchor_bottom = -0.028
+offset_left = -117.472
+offset_top = -206.136
+offset_right = -17.184
+offset_bottom = -159.856
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_ykkkp")
+theme_override_font_sizes/font_size = 40
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 301.0
+offset_top = 184.0
+offset_right = 444.0
+offset_bottom = 263.0
+theme_override_fonts/font = ExtResource("4_ykkkp")
+theme_override_font_sizes/font_size = 30
+text = "Next
+"
+
+[node name="click" parent="." instance=ExtResource("5_4vj7g")]
+
+[node name="back" type="Button" parent="."]
+offset_left = 303.0
+offset_top = 274.0
+offset_right = 445.0
+offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("4_ykkkp")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

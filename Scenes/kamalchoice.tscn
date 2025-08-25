@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dliusiwr5cbcm"]
+
+[ext_resource type="Script" uid="uid://cs7bodcittntv" path="res://Scripts/kamalchoice.gd" id="1_rad58"]
+[ext_resource type="Texture2D" uid="uid://b2yh1kn7m40c4" path="res://Places/kamalscene.jpeg" id="2_e846f"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="2_tfyem"]
+[ext_resource type="Texture2D" uid="uid://b1l0uf0nqy4h2" path="res://Characters/Kamalworried.png" id="3_tfyem"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="4_5cmaw"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="6_5cmaw"]
+[ext_resource type="PackedScene" uid="uid://cchhceker2ybt" path="res://Scenes/correctanswer.tscn" id="7_5cmaw"]
+
+[node name="Kamalchoice" type="Node"]
+script = ExtResource("1_rad58")
+
+[node name="Kamalscene" type="Sprite2D" parent="."]
+position = Vector2(-178.624, -11.9989)
+scale = Vector2(2.38941, 1.26172)
+texture = ExtResource("2_e846f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-99, 50)
+
+[node name="Kamalll" type="Sprite2D" parent="."]
+position = Vector2(-524, 113)
+scale = Vector2(2.41, 1.991)
+texture = ExtResource("3_tfyem")
+
+[node name="distrust" type="Button" parent="."]
+offset_left = -142.0
+offset_top = 48.0
+offset_right = 349.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("4_5cmaw")
+theme_override_font_sizes/font_size = 30
+text = "Stop trusting anyone..."
+
+[node name="Bettermethod" type="Button" parent="."]
+offset_left = -146.0
+offset_top = 110.0
+offset_right = 345.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("4_5cmaw")
+theme_override_font_sizes/font_size = 30
+text = "Use a safer method"
+
+[node name="coin" parent="." instance=ExtResource("2_tfyem")]
+position = Vector2(119, -113)
+scale = Vector2(0.126754, 0.127255)
+
+[node name="click" parent="." instance=ExtResource("6_5cmaw")]
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("7_5cmaw")]
+
+[connection signal="pressed" from="distrust" to="." method="_on_distrust_pressed"]
+[connection signal="pressed" from="Bettermethod" to="." method="_on_bettermethod_pressed"]

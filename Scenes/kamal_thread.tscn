@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4hyyxcyld0ef"]
+
+[ext_resource type="Script" uid="uid://bglywa06khjk4" path="res://Scripts/kamal_thread.gd" id="1_wsax2"]
+[ext_resource type="Texture2D" uid="uid://b2yh1kn7m40c4" path="res://Places/kamalscene.jpeg" id="2_q5qtj"]
+[ext_resource type="Texture2D" uid="uid://boirnnxb4voh8" path="res://Characters/SeedScammer.png" id="3_31cep"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="4_q5qtj"]
+[ext_resource type="Texture2D" uid="uid://heeysfy0g7gq" path="res://Characters/Kamalscenee.png" id="5_q5qtj"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="6_8jatp"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="6_31cep"]
+[ext_resource type="PackedScene" uid="uid://comt40u1q6umc" path="res://Autoloads/correctanswer.tscn" id="7_q5qtj"]
+
+[sub_resource type="Animation" id="Animation_qcwnu"]
+resource_name = "Kamal"
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-814, 673), Vector2(-454, 691)]
+}
+
+[sub_resource type="Animation" id="Animation_y0sj5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-797, 434)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6mbt"]
+_data = {
+&"Kamal": SubResource("Animation_qcwnu"),
+&"RESET": SubResource("Animation_y0sj5")
+}
+
+[node name="Kamal_thread" type="Node"]
+script = ExtResource("1_wsax2")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-308.5, 504)
+scale = Vector2(2.28223, 1.37305)
+texture = ExtResource("2_q5qtj")
+
+[node name="Camera2D" type="Camera2D" parent="background"]
+position = Vector2(-11.0359, -5.96628)
+
+[node name="Scammer" type="Sprite2D" parent="."]
+position = Vector2(109.125, 720.375)
+scale = Vector2(1.4235, 1.7305)
+texture = ExtResource("3_31cep")
+
+[node name="Label" type="Label" parent="Scammer"]
+offset_left = -235.166
+offset_top = -251.443
+offset_right = 3.83421
+offset_bottom = -201.443
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_q5qtj")
+theme_override_font_sizes/font_size = 30
+
+[node name="kamal" type="Sprite2D" parent="."]
+position = Vector2(-797, 434)
+rotation = 0.00367935
+scale = Vector2(1.15371, 1.51742)
+texture = ExtResource("5_q5qtj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="kamal"]
+libraries = {
+&"": SubResource("AnimationLibrary_p6mbt")
+}
+autoplay = "Kamal"
+
+[node name="Label" type="Label" parent="kamal"]
+offset_left = 56.8133
+offset_top = -371.082
+offset_right = 96.8133
+offset_bottom = -348.082
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_q5qtj")
+theme_override_font_sizes/font_size = 30
+
+[node name="FadeRect" type="Sprite2D" parent="."]
+position = Vector2(-317.304, 503.669)
+rotation = 0.00107728
+scale = Vector2(2.3036, 1.37765)
+texture = ExtResource("2_q5qtj")
+
+[node name="next" type="Button" parent="."]
+offset_left = -94.0
+offset_top = 520.0
+offset_right = 38.0
+offset_bottom = 596.0
+theme_override_fonts/font = ExtResource("6_31cep")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="click" parent="." instance=ExtResource("6_8jatp")]
+
+[node name="NarrationLabel" type="Label" parent="."]
+offset_left = -422.0
+offset_top = 46.0
+offset_right = -215.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.894922, 0.894922, 0.894922, 1)
+theme_override_fonts/font = ExtResource("4_q5qtj")
+theme_override_font_sizes/font_size = 40
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("7_q5qtj")]
+script = null
+
+[node name="back" type="Button" parent="."]
+offset_left = -94.0
+offset_top = 611.0
+offset_right = 43.0
+offset_bottom = 686.0
+theme_override_fonts/font = ExtResource("6_31cep")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

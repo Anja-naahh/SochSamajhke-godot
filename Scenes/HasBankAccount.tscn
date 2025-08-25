@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0hp67x2i4wda"]
+
+[ext_resource type="Texture2D" uid="uid://cfovevl0uqru8" path="res://Places/upied.jpeg" id="1_pni2s"]
+[ext_resource type="Script" uid="uid://bdymkjowvh77x" path="res://Scripts/has_bank_account.gd" id="1_rc3tg"]
+[ext_resource type="Texture2D" uid="uid://fjlys4l11ma4" path="res://Characters/prabhaa.png" id="3_q8tbb"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="4_8kjio"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="5_q8tbb"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="6_37wmc"]
+[ext_resource type="PackedScene" uid="uid://cchhceker2ybt" path="res://Scenes/correctanswer.tscn" id="7_pmnw8"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="8_pmnw8"]
+
+[node name="hasbankacc" type="Node"]
+script = ExtResource("1_rc3tg")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(382, -47.5)
+scale = Vector2(1.99341, 1.11426)
+texture = ExtResource("1_pni2s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(372, -48)
+scale = Vector2(1.99341, 1)
+
+[node name="prabha" type="Sprite2D" parent="."]
+position = Vector2(958.5, 113)
+scale = Vector2(1.57, 1.664)
+texture = ExtResource("3_q8tbb")
+
+[node name="Label" type="Label" parent="prabha"]
+offset_left = -334.158
+offset_top = -306.402
+offset_right = -297.158
+offset_bottom = -264.402
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_8kjio")
+theme_override_font_sizes/font_size = 30
+
+[node name="next" type="Button" parent="."]
+offset_left = 379.0
+offset_top = 251.0
+offset_right = 511.0
+offset_bottom = 323.0
+theme_override_fonts/font = ExtResource("8_pmnw8")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="StartQuiz" type="Button" parent="."]
+offset_left = 366.0
+offset_top = 259.0
+offset_right = 517.0
+offset_bottom = 325.0
+theme_override_fonts/font = ExtResource("8_pmnw8")
+theme_override_font_sizes/font_size = 30
+text = "Start Quiz
+"
+
+[node name="coin" parent="." instance=ExtResource("5_q8tbb")]
+position = Vector2(895, -439)
+scale = Vector2(0.172846, 0.167335)
+
+[node name="NarrationLabel" type="Label" parent="."]
+offset_left = 7.0
+offset_top = -391.0
+offset_right = 81.0
+offset_bottom = -336.0
+theme_override_colors/font_color = Color(0.168258, 0.117267, 2.40654e-08, 1)
+theme_override_fonts/font = ExtResource("4_8kjio")
+theme_override_font_sizes/font_size = 40
+
+[node name="click" parent="." instance=ExtResource("6_37wmc")]
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("7_pmnw8")]
+
+[node name="back" type="Button" parent="."]
+offset_left = 383.0
+offset_top = 152.0
+offset_right = 495.0
+offset_bottom = 218.0
+theme_override_fonts/font = ExtResource("8_pmnw8")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="StartQuiz" to="." method="_on_start_quiz_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

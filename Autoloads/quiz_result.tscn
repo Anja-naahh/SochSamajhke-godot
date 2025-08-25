@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6v4b3p0gxyw8"]
+
+[ext_resource type="AudioStream" uid="uid://ccolv2myh7nx4" path="res://Audio/quizresult.mp3" id="1_vbck6"]
+[ext_resource type="Script" uid="uid://c5b73eh4lbg3s" path="res://Autoloads/quiz_result.gd" id="2_4c0i0"]
+
+[node name="quiz_result" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_vbck6")
+script = ExtResource("2_4c0i0")

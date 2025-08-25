@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://bngqql3urd3me"]
+
+[ext_resource type="Script" uid="uid://j52o6yshb4ej" path="res://Scripts/savings_suggestor.gd" id="1_k2okp"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="2_1xgbo"]
+[ext_resource type="Texture2D" uid="uid://d17rxde6la0bo" path="res://Places/indian village digital illustration style calm and serene (2).jpg" id="2_k2okp"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="3_7twll"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="5_7twll"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_k2okp")
+
+[node name="click" parent="." instance=ExtResource("2_1xgbo")]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-12, -39)
+scale = Vector2(1.33016, 1.57212)
+texture = ExtResource("2_k2okp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -329.0
+offset_top = -288.0
+offset_right = 509.0
+offset_bottom = -219.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_7twll")
+theme_override_font_sizes/font_size = 45
+text = "Lets find the best saving method for you"
+
+[node name="QuestionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -218.0
+offset_top = -194.0
+offset_right = 245.0
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_7twll")
+theme_override_font_sizes/font_size = 40
+text = "How do you usually earn money"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -130.0
+offset_right = 45.0
+offset_bottom = -91.0
+theme_override_font_sizes/font_size = 30
+icon_alignment = 1
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 193.0
+offset_right = 338.0
+offset_bottom = 243.0
+theme_override_fonts/font = ExtResource("5_7twll")
+theme_override_font_sizes/font_size = 30
+text = "Get Suggestion"
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 249.0
+offset_right = 307.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource("5_7twll")
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[node name="SuggestionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -522.0
+offset_top = 131.0
+offset_right = -246.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("3_7twll")
+theme_override_font_sizes/font_size = 30
+
+[node name="AmountLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -281.0
+offset_top = -72.0
+offset_right = 405.0
+offset_bottom = -17.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_7twll")
+theme_override_font_sizes/font_size = 40
+text = "How much do you wish to save per month"
+
+[node name="AmountInput" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = -59.0
+offset_top = 46.0
+offset_right = 61.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 30
+
+[connection signal="pressed" from="SubmitButton" to="." method="_on_SubmitButton_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

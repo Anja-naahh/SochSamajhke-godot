@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmtmtdbuswq7u"]
+
+[ext_resource type="Script" uid="uid://cvohec31ri3fo" path="res://Scripts/nextsteps.gd" id="1_j64ij"]
+[ext_resource type="Texture2D" uid="uid://dyg7crw2n162l" path="res://Places/Bank (1).jpg" id="2_tt70i"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="3_3e0o1"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="3_aa1cs"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="4_rhbv0"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="5_aa1cs"]
+[ext_resource type="PackedScene" uid="uid://cchhceker2ybt" path="res://Scenes/correctanswer.tscn" id="6_rhbv0"]
+
+[node name="nextsteps" type="Node"]
+script = ExtResource("1_j64ij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-43.5001, -113.999)
+scale = Vector2(1.32405, 1.35817)
+texture = ExtResource("2_tt70i")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+
+[node name="next" type="Button" parent="."]
+offset_left = -66.0
+offset_top = 183.0
+offset_right = 59.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("3_aa1cs")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="nextsteps" type="Label" parent="."]
+offset_left = -317.0
+offset_top = -114.0
+offset_right = -277.0
+offset_bottom = -59.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3e0o1")
+theme_override_font_sizes/font_size = 40
+
+[node name="Done" type="Button" parent="."]
+offset_left = -69.0
+offset_top = 184.0
+offset_right = 60.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("3_aa1cs")
+theme_override_font_sizes/font_size = 30
+text = "Done"
+
+[node name="click" parent="." instance=ExtResource("4_rhbv0")]
+
+[node name="coin" parent="." instance=ExtResource("5_aa1cs")]
+position = Vector2(398.313, -239.625)
+scale = Vector2(0.149549, 0.142786)
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("6_rhbv0")]
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Done" to="." method="_on_done_pressed"]

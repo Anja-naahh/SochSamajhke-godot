@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca3yhhy6pa6oj"]
+
+[ext_resource type="Script" uid="uid://cdeei6s6wo3qn" path="res://Scripts/suman_arrives.gd" id="1_2j1xd"]
+[ext_resource type="Texture2D" uid="uid://be7nw7rcllv8m" path="res://Places/RationShop.jpg" id="1_4jpe8"]
+[ext_resource type="Texture2D" uid="uid://cf51tago3f4eb" path="res://Characters/RationScammer.png" id="2_ockhp"]
+[ext_resource type="Texture2D" uid="uid://bc72urlu8tygn" path="res://Characters/Suman_ration.png" id="3_2j1xd"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="5_0wmnu"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="6_af7f8"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="7_fcjyu"]
+
+[sub_resource type="Animation" id="Animation_af7f8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(746, 217)]
+}
+
+[sub_resource type="Animation" id="Animation_0wmnu"]
+resource_name = "sumanentersrationshop"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(691, 266), Vector2(243, 246)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsili"]
+_data = {
+&"RESET": SubResource("Animation_af7f8"),
+&"sumanentersrationshop": SubResource("Animation_0wmnu")
+}
+
+[node name="suman_arrives" type="Node"]
+script = ExtResource("1_2j1xd")
+
+[node name="backgound" type="Sprite2D" parent="."]
+position = Vector2(266.249, 188)
+scale = Vector2(2.8808, 1.36696)
+texture = ExtResource("1_4jpe8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3, -50)
+
+[node name="bhola" type="Sprite2D" parent="."]
+position = Vector2(23, 0)
+
+[node name="RationScammer" type="Sprite2D" parent="."]
+position = Vector2(-186, 147)
+scale = Vector2(0.848, 0.836)
+texture = ExtResource("2_ockhp")
+
+[node name="Suman" type="Sprite2D" parent="."]
+position = Vector2(746, 217)
+scale = Vector2(0.97075, 1.22592)
+texture = ExtResource("3_2j1xd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Suman"]
+libraries = {
+&"": SubResource("AnimationLibrary_tsili")
+}
+autoplay = "sumanentersrationshop"
+
+[node name="SpeechBubbles" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BubbleSuman" type="NinePatchRect" parent="SpeechBubbles"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = -66.0
+offset_right = 273.0
+offset_bottom = 12.0
+
+[node name="TextSuman" type="Label" parent="SpeechBubbles/BubbleSuman"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.11
+anchor_bottom = 0.269
+offset_left = 126.0
+offset_top = 28.0
+offset_right = 143.09
+offset_bottom = 49.018
+theme_override_fonts/font = ExtResource("5_0wmnu")
+theme_override_font_sizes/font_size = 30
+
+[node name="BubbleBhola" type="NinePatchRect" parent="SpeechBubbles"]
+layout_mode = 0
+offset_left = -199.0
+offset_top = -127.0
+offset_right = -45.0
+offset_bottom = -56.0
+
+[node name="TextBhola" type="Label" parent="SpeechBubbles/BubbleBhola"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_0wmnu")
+theme_override_font_sizes/font_size = 30
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 341.0
+offset_top = 200.0
+offset_right = 483.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("5_0wmnu")
+theme_override_font_sizes/font_size = 30
+text = "Next
+"
+
+[node name="desciption" type="Label" parent="."]
+offset_left = -489.0
+offset_top = -323.0
+offset_right = 527.0
+offset_bottom = -268.0
+theme_override_colors/font_color = Color(0.741134, 0.732673, 0.0493952, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_af7f8")
+theme_override_font_sizes/font_size = 40
+text = "Suman visits Bhola's Store and the bill comes out to be 320 rs"
+
+[node name="click" parent="." instance=ExtResource("7_fcjyu")]
+
+[node name="back" type="Button" parent="."]
+offset_left = 349.0
+offset_top = 285.0
+offset_right = 487.0
+offset_bottom = 345.0
+theme_override_fonts/font = ExtResource("5_0wmnu")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

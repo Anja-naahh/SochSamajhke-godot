@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhr8138ewuwji"]
+
+[ext_resource type="Texture2D" uid="uid://cn01p8fkqjjmi" path="res://Places/Scam.jpeg" id="1_1rupt"]
+[ext_resource type="Script" uid="uid://snguem7yx3p0" path="res://Scripts/scam_scene.gd" id="1_4dvlm"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="3_n56rk"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="3_p27ux"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="4_p27ux"]
+
+[node name="ScamScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4dvlm")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(36, 53)
+scale = Vector2(2.03711, 1.30371)
+texture = ExtResource("1_1rupt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -572.0
+offset_top = -399.0
+offset_right = -537.0
+offset_bottom = -344.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_p27ux")
+theme_override_font_sizes/font_size = 40
+
+[node name="next" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.125
+anchor_bottom = 1.462
+offset_left = 252.0
+offset_top = 209.0
+offset_right = 364.0
+offset_bottom = 237.52
+theme_override_fonts/font = ExtResource("3_p27ux")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="coin" parent="." instance=ExtResource("3_n56rk")]
+position = Vector2(475, -416)
+scale = Vector2(0.178858, 0.185371)
+
+[node name="click" parent="." instance=ExtResource("4_p27ux")]
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 220.0
+offset_right = 174.0
+offset_bottom = 294.0
+theme_override_fonts/font = ExtResource("3_p27ux")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

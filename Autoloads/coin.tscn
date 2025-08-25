@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyiq1xrruswtg"]
+
+[ext_resource type="Texture2D" uid="uid://xmgcfwhid0j1" path="res://Characters/image-removebg-preview.png" id="1_d5gmh"]
+[ext_resource type="Script" uid="uid://dn0imomv0asy3" path="res://Scripts/coin.gd" id="2_jgi06"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="3_g537i"]
+
+[node name="coin" type="Sprite2D"]
+position = Vector2(-133, 42)
+scale = Vector2(0.477956, 0.450902)
+texture = ExtResource("1_d5gmh")
+script = ExtResource("2_jgi06")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Score" type="Label" parent="."]
+offset_left = 253.161
+offset_top = -93.1467
+offset_right = 293.161
+offset_bottom = 71.8533
+theme_override_fonts/font = ExtResource("3_g537i")
+theme_override_font_sizes/font_size = 120

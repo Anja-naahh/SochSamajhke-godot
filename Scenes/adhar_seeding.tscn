@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmj3w6t5nv426"]
+
+[ext_resource type="Script" uid="uid://beux7oamr7wq3" path="res://Scripts/adhar_seeding.gd" id="1_kir03"]
+[ext_resource type="Texture2D" uid="uid://d17rxde6la0bo" path="res://Places/indian village digital illustration style calm and serene (2).jpg" id="2_lmf1h"]
+[ext_resource type="Texture2D" uid="uid://fjlys4l11ma4" path="res://Characters/prabhaa.png" id="3_dpj5g"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="4_0wddx"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="4_dpj5g"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="4_lmf1h"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="5_cxat3"]
+
+[node name="adharseeding" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kir03")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(315.002, -11.9997)
+scale = Vector2(1.41848, 1.51202)
+texture = ExtResource("2_lmf1h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(334, -39)
+
+[node name="prabha" type="Sprite2D" parent="."]
+position = Vector2(930, 101.687)
+scale = Vector2(1.4095, 1.53475)
+texture = ExtResource("3_dpj5g")
+
+[node name="Label" type="Label" parent="prabha"]
+offset_left = -256.595
+offset_top = -292.487
+offset_right = -205.595
+offset_bottom = -250.487
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_dpj5g")
+theme_override_font_sizes/font_size = 30
+
+[node name="next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 305.0
+offset_right = 530.0
+offset_bottom = 377.0
+theme_override_fonts/font = ExtResource("4_lmf1h")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="NextSceneButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 311.0
+offset_right = 538.0
+offset_bottom = 374.0
+theme_override_fonts/font = ExtResource("4_lmf1h")
+theme_override_font_sizes/font_size = 30
+text = "Start quiz"
+
+[node name="NarrationLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = -383.0
+offset_right = 106.0
+offset_bottom = -328.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_dpj5g")
+theme_override_font_sizes/font_size = 40
+
+[node name="click" parent="." instance=ExtResource("4_0wddx")]
+
+[node name="coin" parent="." instance=ExtResource("5_cxat3")]
+position = Vector2(755, -455)
+scale = Vector2(0.163389, 0.15243)
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 219.0
+offset_right = 508.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("4_dpj5g")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="NextSceneButton" to="." method="_on_NextSceneButton_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

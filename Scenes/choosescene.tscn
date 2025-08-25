@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbwhegmecpjnu"]
+
+[ext_resource type="Texture2D" uid="uid://cfovevl0uqru8" path="res://Places/upied.jpeg" id="1_ol665"]
+[ext_resource type="Script" uid="uid://b5yjsgphip0w2" path="res://Scripts/choosescene.gd" id="1_qyf0s"]
+[ext_resource type="Texture2D" uid="uid://ch6qpcwuyc771" path="res://Characters/phonee-removebg-preview.png" id="2_aw3ht"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="3_aw3ht"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="5_1sjjo"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="5_81ibh"]
+[ext_resource type="PackedScene" uid="uid://cchhceker2ybt" path="res://Scenes/correctanswer.tscn" id="6_81ibh"]
+[ext_resource type="PackedScene" uid="uid://cv8t6fdhq5x87" path="res://Autoloads/wronganswer.tscn" id="7_ii3tb"]
+
+[sub_resource type="Animation" id="Animation_ol665"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(893, 87)]
+}
+
+[sub_resource type="Animation" id="Animation_qyf0s"]
+resource_name = "phone animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(896, 131), Vector2(458, 129)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qle4h"]
+_data = {
+&"RESET": SubResource("Animation_ol665"),
+&"phone animation": SubResource("Animation_qyf0s")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qyf0s")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(7.00003, -28.501)
+scale = Vector2(1.97656, 1.16504)
+texture = ExtResource("1_ol665")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, -31)
+
+[node name="phone" type="Sprite2D" parent="."]
+position = Vector2(893, 87)
+scale = Vector2(2.65775, 1.71331)
+texture = ExtResource("2_aw3ht")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="phone"]
+libraries = {
+&"": SubResource("AnimationLibrary_qle4h")
+}
+autoplay = "phone animation"
+
+[node name="Label" type="Label" parent="phone"]
+offset_left = -91.0
+offset_top = -16.0
+offset_right = -15.0
+offset_bottom = 82.0
+rotation = -0.211585
+scale = Vector2(1.12297, 0.637861)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_aw3ht")
+theme_override_font_sizes/font_size = 10
+text = "Congratulations!
+ You've won 
+₹2,00,000. 
+Click this link to
+ claim now."
+
+[node name="click" type="Button" parent="."]
+layout_mode = 0
+offset_left = -406.0
+offset_top = -64.0
+offset_right = -117.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("3_aw3ht")
+theme_override_font_sizes/font_size = 30
+text = "Click the link"
+
+[node name="noclick" type="Button" parent="."]
+layout_mode = 0
+offset_left = -407.0
+offset_top = 46.0
+offset_right = -116.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("3_aw3ht")
+theme_override_font_sizes/font_size = 30
+text = "Ignore the message"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -478.0
+offset_top = -173.0
+offset_right = 567.0
+offset_bottom = -118.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_aw3ht")
+theme_override_font_sizes/font_size = 40
+text = "You return home to see a this message on your phone"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = -283.0
+offset_top = -57.0
+offset_right = -243.0
+offset_bottom = -15.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_81ibh")
+theme_override_font_sizes/font_size = 30
+
+[node name="coin" parent="." instance=ExtResource("5_1sjjo")]
+position = Vector2(263, -298)
+scale = Vector2(0.155561, 0.145792)
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("6_81ibh")]
+
+[node name="wronganswer" parent="." instance=ExtResource("7_ii3tb")]
+
+[connection signal="pressed" from="click" to="." method="_on_click_pressed"]
+[connection signal="pressed" from="noclick" to="." method="_on_noclick_pressed"]

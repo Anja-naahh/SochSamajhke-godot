@@ -1,0 +1,13 @@
+res://Scenes/welcome.tscn
+res://Scenes/AskBankAccount.tscn
+res://Characters/suman.tscn
+res://Characters/kamal.tscn
+res://Scenes/suman_destress.tscn
+res://Scenes/suman_arrives.tscn
+res://Scenes/SavingsSuggestor.tscn
+res://Scenes/ScamScene.tscn
+res://Scenes/nextsteps.tscn
+res://Scenes/furtherinfo.tscn
+res://Scripts/budget_planner_scene.gd
+res://Scenes/BudgetPlannerScene.tscn
+res://Scripts/savings_suggestor.gd

@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctqv4fcdscm0j"]
+
+[ext_resource type="Texture2D" uid="uid://cwojox8a68xyc" path="res://Places/indian village digital illustration style calm and serene (3).jpg" id="1_e7tja"]
+[ext_resource type="Script" uid="uid://1cohppxbqssn" path="res://Scripts/budget_planner_scene.gd" id="1_ib6ef"]
+[ext_resource type="PackedScene" uid="uid://comt40u1q6umc" path="res://Autoloads/correctanswer.tscn" id="3_bu1bb"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="3_xmcoj"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="4_psp4d"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="6_uerv1"]
+
+[node name="budgetplanner" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ib6ef")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-12.7491, -40.0629)
+scale = Vector2(1.41406, 1.60832)
+texture = ExtResource("1_e7tja")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -278.0
+offset_top = -275.0
+offset_right = 315.0
+offset_bottom = -220.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 40
+text = "Lets plan your monthly budget"
+
+[node name="AmounInput" type="Label" parent="."]
+layout_mode = 0
+offset_left = -333.0
+offset_top = -190.0
+offset_right = 379.0
+offset_bottom = -148.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 30
+text = "How much are you planning to make budget with"
+
+[node name="AmountInput" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = -365.0
+offset_top = -111.0
+offset_right = -243.0
+offset_bottom = -59.0
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 30
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 213.0
+offset_right = 412.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 25
+text = "Plan budget"
+
+[node name="ResultBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -651.0
+offset_top = 65.0
+offset_right = -611.0
+offset_bottom = 189.0
+
+[node name="BreakdownLabel" type="Label" parent="ResultBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 25
+
+[node name="RupeeBreakdownLabel" type="Label" parent="ResultBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 25
+
+[node name="TipLabel" type="Label" parent="ResultBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 25
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 217.0
+offset_right = 141.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("3_xmcoj")
+theme_override_font_sizes/font_size = 25
+text = "Continue"
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("3_bu1bb")]
+
+[node name="PlanButtonsBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 79.0
+offset_bottom = 56.0
+
+[node name="BasicBudget" type="Button" parent="PlanButtonsBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_psp4d")
+theme_override_font_sizes/font_size = 25
+text = "Basic  Budget"
+
+[node name="PracticalBudget" type="Button" parent="PlanButtonsBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_psp4d")
+theme_override_font_sizes/font_size = 25
+text = "Practical Budget"
+
+[node name="SmartSaver" type="Button" parent="PlanButtonsBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_psp4d")
+theme_override_font_sizes/font_size = 25
+text = "Smart Saver"
+
+[node name="click" parent="." instance=ExtResource("6_uerv1")]
+
+[connection signal="pressed" from="SubmitButton" to="." method="_on_SubmitButton_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="PlanButtonsBox/BasicBudget" to="." method="_on_BasicBudget_pressed"]
+[connection signal="pressed" from="PlanButtonsBox/PracticalBudget" to="." method="_on_PracticalBudget_pressed"]
+[connection signal="pressed" from="PlanButtonsBox/SmartSaver" to="." method="_on_SmartSaver_pressed"]

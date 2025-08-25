@@ -1,0 +1,17 @@
+extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Musicmanager.play_music("res://Audio/main_loop.mp3")
+	$coin.update_score()
+
+func _on_try_pressed() -> void:
+	$CorrectAnswer.play_correct()
+	OS.shell_open("https://scamsleuth-xrncbyiezrnfxtxs8di9bh.streamlit.app/")
+
+func _on_continue_pressed() -> void:
+	$click.play()
+	GameState.current_quiz="scam"
+	await get_tree().create_timer(0.2).timeout
+	get_tree().change_scene_to_file("res://Scenes/QuizScene.tscn")

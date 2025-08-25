@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cchhceker2ybt"]
+
+[ext_resource type="AudioStream" uid="uid://c1r4x46e13aug" path="res://Audio/correctanswer.mp3" id="1_5052o"]
+[ext_resource type="Script" uid="uid://bj71pfm0ho4os" path="res://Scripts/correctanswer.gd" id="2_hfeuh"]
+
+[node name="CorrectAnswer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_5052o")
+script = ExtResource("2_hfeuh")

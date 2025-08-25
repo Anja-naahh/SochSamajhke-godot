@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4m2et24kkigk"]
+
+[ext_resource type="Texture2D" uid="uid://cwojox8a68xyc" path="res://Places/indian village digital illustration style calm and serene (3).jpg" id="1_kpc6u"]
+[ext_resource type="Script" uid="uid://dr2d64wponelt" path="res://Scripts/thankyou.gd" id="1_n0d1m"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="2_n0d1m"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="4_7le8l"]
+[ext_resource type="PackedScene" uid="uid://comt40u1q6umc" path="res://Autoloads/correctanswer.tscn" id="5_ay3tm"]
+
+[node name="Thankyou" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n0d1m")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(225, -57.0628)
+scale = Vector2(1.37364, 1.52629)
+texture = ExtResource("1_kpc6u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(265, -36)
+
+[node name="next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 157.0
+offset_right = 550.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="PlayAgain" type="Button" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 151.0
+offset_right = 584.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 30
+text = "Play Again"
+
+[node name="NarrationLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_n0d1m")
+theme_override_font_sizes/font_size = 30
+
+[node name="click" parent="." instance=ExtResource("4_7le8l")]
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("5_ay3tm")]
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="PlayAgain" to="." method="_on_PlayAgain_pressed"]

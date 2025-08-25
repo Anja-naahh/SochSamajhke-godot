@@ -1,0 +1,17 @@
+# Godot-specific
+.import/
+export.cfg
+export_presets.cfg
+
+# Exported builds
+*.exe
+*.apk
+*.zip
+*.pck
+*.wasm
+*.html
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini

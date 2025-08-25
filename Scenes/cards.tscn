@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://bctufrdc5qv0q"]
+
+[ext_resource type="Script" uid="uid://bq7gwv71oxvbc" path="res://Scripts/cards.gd" id="1_1iigk"]
+[ext_resource type="Texture2D" uid="uid://d0q7q40y8tum5" path="res://Places/quiz4.jpg" id="2_k3sx0"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="3_j4ia5"]
+[ext_resource type="Texture2D" uid="uid://fjlys4l11ma4" path="res://Characters/prabhaa.png" id="4_e8rha"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="5_msu3g"]
+[ext_resource type="PackedScene" uid="uid://dyiq1xrruswtg" path="res://Autoloads/coin.tscn" id="6_3yojv"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="7_a3k0w"]
+[ext_resource type="PackedScene" uid="uid://comt40u1q6umc" path="res://Autoloads/correctanswer.tscn" id="8_8nna5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1iigk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(442.5, -89.9992)
+scale = Vector2(2.33661, 1.1125)
+texture = ExtResource("2_k3sx0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(329, -61)
+
+[node name="NarrationLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -201.0
+offset_top = -389.0
+offset_right = -161.0
+offset_bottom = -347.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_j4ia5")
+theme_override_font_sizes/font_size = 39
+
+[node name="prabha" type="Sprite2D" parent="."]
+position = Vector2(914, 106.875)
+scale = Vector2(1.621, 1.6875)
+texture = ExtResource("4_e8rha")
+
+[node name="Label" type="Label" parent="prabha"]
+offset_left = -418.877
+offset_top = -304.519
+offset_right = -381.877
+offset_bottom = -242.519
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_msu3g")
+theme_override_font_sizes/font_size = 30
+
+[node name="next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 190.0
+offset_right = 426.0
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("3_j4ia5")
+theme_override_font_sizes/font_size = 25
+text = "Next"
+
+[node name="gotoquiz" type="Button" parent="."]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 191.0
+offset_right = 438.0
+offset_bottom = 242.0
+theme_override_fonts/font = ExtResource("3_j4ia5")
+theme_override_font_sizes/font_size = 25
+text = " Go to quiz"
+
+[node name="coin" parent="." instance=ExtResource("6_3yojv")]
+position = Vector2(871, -502)
+scale = Vector2(0.164454, 0.153557)
+
+[node name="click" parent="." instance=ExtResource("7_a3k0w")]
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("8_8nna5")]
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 111.0
+offset_right = 408.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("5_msu3g")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="gotoquiz" to="." method="_on_go_to_quiz_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv8t6fdhq5x87"]
+
+[ext_resource type="AudioStream" uid="uid://drmarm6oxx864" path="res://Audio/wronganswer.mp3" id="1_yeqhs"]
+[ext_resource type="Script" uid="uid://cosqpy08wpp4e" path="res://Scripts/wronganswer.gd" id="2_go8qs"]
+
+[node name="wronganswer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_yeqhs")
+script = ExtResource("2_go8qs")

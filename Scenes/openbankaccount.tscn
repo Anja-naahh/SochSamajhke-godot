@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs1pybeo3t4su"]
+
+[ext_resource type="Script" uid="uid://cw84nbqs8wrdo" path="res://Scripts/openbankaccount.gd" id="1_l6cxw"]
+[ext_resource type="Texture2D" uid="uid://cof51cox8e0e3" path="res://Places/Bank (2).jpg" id="2_lq0gy"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="3_c41t1"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="3_lq0gy"]
+[ext_resource type="PackedScene" uid="uid://dyiq1xrruswtg" path="res://Autoloads/coin.tscn" id="4_bpp8p"]
+
+[node name="openbankaccount" type="Node"]
+script = ExtResource("1_l6cxw")
+
+[node name="Bank" type="Sprite2D" parent="."]
+position = Vector2(19, 75.3131)
+scale = Vector2(1.44158, 1.75556)
+texture = ExtResource("2_lq0gy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Step 1" type="Label" parent="."]
+offset_left = -362.0
+offset_top = 79.0
+offset_right = 433.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.679496, 0.393667, 0.0348827, 1)
+theme_override_colors/font_outline_color = Color(0.36359, 0.2496, 0.046869, 1)
+theme_override_fonts/font = ExtResource("3_c41t1")
+theme_override_font_sizes/font_size = 60
+text = "Visit to your nearest bank.."
+
+[node name="next" type="Button" parent="."]
+offset_left = -80.0
+offset_top = 216.0
+offset_right = 86.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("3_c41t1")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="click" parent="." instance=ExtResource("3_lq0gy")]
+
+[node name="coin" parent="." instance=ExtResource("4_bpp8p")]
+position = Vector2(357, -247)
+scale = Vector2(0.176854, 0.159319)
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]

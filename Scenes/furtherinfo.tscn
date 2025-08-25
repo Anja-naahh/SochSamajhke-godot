@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://dk8tnbsyvqwsg"]
+
+[ext_resource type="Script" uid="uid://4nvdnp47i0rc" path="res://Scripts/furtherinfo.gd" id="1_81w6k"]
+[ext_resource type="Texture2D" uid="uid://1f5jotmqxmc6" path="res://Places/quiz2.jpg" id="1_n0eym"]
+[ext_resource type="PackedScene" uid="uid://beklx4i070o0m" path="res://Scenes/coin.tscn" id="3_3pyit"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="3_gb13p"]
+[ext_resource type="PackedScene" uid="uid://bcsly04x8mppy" path="res://Scenes/click.tscn" id="4_gb13p"]
+[ext_resource type="PackedScene" uid="uid://comt40u1q6umc" path="res://Autoloads/correctanswer.tscn" id="5_owe6c"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="7_gb13p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_81w6k")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-1.99998, -0.999947)
+scale = Vector2(1.86071, 1.12143)
+texture = ExtResource("1_n0eym")
+
+[node name="Camera2D" type="Camera2D" parent="Background"]
+position = Vector2(-0.74367, -24.3478)
+scale = Vector2(0.758808, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -432.0
+offset_top = -417.0
+offset_right = 556.0
+offset_bottom = 421.0
+theme_override_fonts/normal_font = ExtResource("3_gb13p")
+theme_override_fonts/mono_font = ExtResource("3_gb13p")
+theme_override_fonts/italics_font = ExtResource("3_gb13p")
+theme_override_fonts/bold_italics_font = ExtResource("3_gb13p")
+theme_override_fonts/bold_font = ExtResource("3_gb13p")
+theme_override_font_sizes/bold_italics_font_size = 25
+theme_override_font_sizes/italics_font_size = 25
+theme_override_font_sizes/mono_font_size = 25
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[color=black]Scam messages aren’t always obvious.  
+Even smart people fall for them when they’re in a hurry or scared.  [/color]
+[color=black][b] Common Scam Tricks:[/b]  
+– \"You’ve won ₹10,000!\" – with a shady link  
+– \"Your account will be blocked\" – to create panic  
+– Fake websites that look exactly like real ones  
+– Asking for OTPs, Aadhaar, or bank info  [/color]
+  
+These messages try to make you act fast.  
+But you can stop and double-check before it’s too late.  
+  
+[b]Use ScamSleuth to stay safe.[/b]  
+[color=white]It’s a tool that uses AI to scan your message  
+and tells you if it looks like a scam — within seconds.  [/color]
+  
+[color=darkbrown]    Before you click anything, forward any SMS, or panic — test it first.[/color]  
+  
+[b][color=orange]But remember:[/color][/b]  
+[i][color=white]Not all unusual messages are scams.[/color][/i]  
+[color=white]Sometimes banks or companies really do send updates or offers.[/color]  
+  
+[color=black]That’s why ScamSleuth is here — to help you decide with confidence.[/color]
+"
+
+[node name="coin" parent="." instance=ExtResource("3_3pyit")]
+position = Vector2(321, -367)
+scale = Vector2(0.185621, 0.161824)
+
+[node name="click" parent="." instance=ExtResource("4_gb13p")]
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("5_owe6c")]
+
+[node name="try" type="Button" parent="."]
+layout_mode = 0
+offset_left = -409.0
+offset_top = 380.0
+offset_right = -157.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("7_gb13p")
+theme_override_font_sizes/font_size = 30
+text = "Try ScamSleuth"
+
+[node name="continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = -86.0
+offset_top = 376.0
+offset_right = 256.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("7_gb13p")
+theme_override_font_sizes/font_size = 30
+text = "Continue to take a quiz"
+
+[connection signal="pressed" from="try" to="." method="_on_try_pressed"]
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

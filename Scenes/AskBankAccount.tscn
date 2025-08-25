@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://1eeamodm02la"]
+
+[ext_resource type="Script" uid="uid://bphqeu38o3he4" path="res://Scripts/ask_bank_account.gd" id="1_jvn0p"]
+[ext_resource type="Texture2D" uid="uid://cb5on8ua3l16r" path="res://Places/vilage.jpg" id="2_0u7as"]
+[ext_resource type="Texture2D" uid="uid://cncc13a8w1tvs" path="res://Characters/Prabha_akka.png" id="3_qub7l"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="4_qub7l"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="5_0u7as"]
+[ext_resource type="PackedScene" uid="uid://dyiq1xrruswtg" path="res://Autoloads/coin.tscn" id="6_fqpf0"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="7_6lxbc"]
+
+[sub_resource type="Animation" id="Animation_h3e8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-926, 140)]
+}
+
+[sub_resource type="Animation" id="Animation_1wo4t"]
+resource_name = "prabha"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-926, 140), Vector2(-543, 149)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tgk4c"]
+_data = {
+&"RESET": SubResource("Animation_h3e8y"),
+&"prabha": SubResource("Animation_1wo4t")
+}
+
+[sub_resource type="GDScript" id="GDScript_tgk4c"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Node" type="Node"]
+script = ExtResource("1_jvn0p")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-153, 12)
+scale = Vector2(1.5788, 1.7524)
+texture = ExtResource("2_0u7as")
+
+[node name="Prabha akka" type="Sprite2D" parent="."]
+position = Vector2(-926, 140)
+scale = Vector2(2.004, 2.13581)
+texture = ExtResource("3_qub7l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prabha akka"]
+libraries = {
+&"": SubResource("AnimationLibrary_tgk4c")
+}
+autoplay = "prabha"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-53, 35)
+scale = Vector2(1.47552, 1.35254)
+
+[node name="prabhaintro" type="Label" parent="."]
+offset_left = -418.0
+offset_top = -202.0
+offset_right = -340.0
+offset_bottom = -147.0
+theme_override_colors/font_color = Color(0.961, 0.959803, 0.962398, 1)
+theme_override_fonts/font = ExtResource("4_qub7l")
+theme_override_font_sizes/font_size = 40
+script = SubResource("GDScript_tgk4c")
+
+[node name="next" type="Button" parent="."]
+offset_left = 164.0
+offset_top = 200.0
+offset_right = 287.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("5_0u7as")
+theme_override_font_sizes/font_size = 30
+text = "Next"
+
+[node name="yes" type="Button" parent="."]
+offset_top = -5.0
+offset_right = 166.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("5_0u7as")
+theme_override_font_sizes/font_size = 40
+text = "Yes"
+
+[node name="no" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 68.0
+offset_right = 173.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("5_0u7as")
+theme_override_font_sizes/font_size = 40
+text = "No"
+
+[node name="coin" parent="." instance=ExtResource("6_fqpf0")]
+position = Vector2(225, -287)
+scale = Vector2(0.153307, 0.136273)
+
+[node name="click" parent="." instance=ExtResource("7_6lxbc")]
+
+[node name="back" type="Button" parent="."]
+offset_left = 27.0
+offset_top = 204.0
+offset_right = 145.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("4_qub7l")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

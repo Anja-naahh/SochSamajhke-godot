@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://djqfi14y4ey25"]
+
+[ext_resource type="Script" uid="uid://2p8w734t7r20" path="res://Scripts/suman_destress.gd" id="1_f6p65"]
+[ext_resource type="Texture2D" uid="uid://be7nw7rcllv8m" path="res://Places/RationShop.jpg" id="1_lh571"]
+[ext_resource type="Texture2D" uid="uid://cvqd3on41isi8" path="res://Characters/Sumanworried.png" id="2_oeb2k"]
+[ext_resource type="FontFile" uid="uid://dlihvmudmpwrd" path="res://fonts/NotoSans_Condensed-BlackItalic.ttf" id="4_myyjv"]
+[ext_resource type="PackedScene" uid="uid://dyiq1xrruswtg" path="res://Autoloads/coin.tscn" id="5_rhdbc"]
+[ext_resource type="PackedScene" uid="uid://d1ig3so1au4ut" path="res://Autoloads/click.tscn" id="6_5bdsu"]
+[ext_resource type="PackedScene" uid="uid://cchhceker2ybt" path="res://Scenes/correctanswer.tscn" id="7_u855e"]
+
+[sub_resource type="GDScript" id="GDScript_f6p65"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Node" type="Node"]
+script = ExtResource("1_f6p65")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-131, 61.4992)
+scale = Vector2(2.26429, 1.21518)
+texture = ExtResource("1_lh571")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="distressed_suman" type="Sprite2D" parent="."]
+position = Vector2(-276.313, 312)
+scale = Vector2(1.49475, 1.592)
+texture = ExtResource("2_oeb2k")
+script = SubResource("GDScript_f6p65")
+
+[node name="DistrustButton" type="Button" parent="."]
+offset_left = 55.0
+offset_top = -9.0
+offset_right = 318.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_myyjv")
+theme_override_font_sizes/font_size = 20
+text = "Stop trusting shopkeepers.."
+
+[node name="saferpayment_button" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 79.0
+offset_right = 325.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_myyjv")
+theme_override_font_sizes/font_size = 20
+text = "Use Safer payment methods"
+
+[node name="coin" parent="." instance=ExtResource("5_rhdbc")]
+position = Vector2(344, -260)
+scale = Vector2(0.196643, 0.15481)
+
+[node name="click" parent="." instance=ExtResource("6_5bdsu")]
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("7_u855e")]
+
+[connection signal="pressed" from="DistrustButton" to="." method="_on_distrust_button_pressed"]
+[connection signal="pressed" from="saferpayment_button" to="." method="_on_saferpayment_button_pressed"]

@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://mgqimjwyim7h"]
+
+[ext_resource type="Script" uid="uid://b3joye7svaxw" path="res://Scripts/quiz_scene.gd" id="1_3bdsy"]
+[ext_resource type="Texture2D" uid="uid://brrfr7xruerlk" path="res://Places/quizbackground.jpg" id="1_yhe50"]
+[ext_resource type="FontFile" uid="uid://bykdunab85cgs" path="res://fonts/NotoSans_Condensed-Black.ttf" id="2_psek3"]
+[ext_resource type="PackedScene" uid="uid://cchhceker2ybt" path="res://Scenes/correctanswer.tscn" id="4_qems5"]
+[ext_resource type="PackedScene" uid="uid://cv8t6fdhq5x87" path="res://Autoloads/wronganswer.tscn" id="5_n24ut"]
+[ext_resource type="PackedScene" uid="uid://dyiq1xrruswtg" path="res://Autoloads/coin.tscn" id="6_cf80e"]
+[ext_resource type="PackedScene" uid="uid://b6v4b3p0gxyw8" path="res://Autoloads/quiz_result.tscn" id="7_qems5"]
+
+[node name="QuizScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3bdsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(104.126, 76)
+scale = Vector2(1.79665, 1.12924)
+texture = ExtResource("1_yhe50")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(-16.2297, -17.3789)
+scale = Vector2(0.595586, 0.88555)
+
+[node name="QuestionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -252.0
+offset_top = -262.0
+offset_right = 203.0
+offset_bottom = -207.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Option1" type="Button" parent="."]
+layout_mode = 0
+offset_left = -214.0
+offset_top = -81.0
+offset_right = -173.0
+offset_bottom = -73.0
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 30
+
+[node name="Option2" type="Button" parent="."]
+layout_mode = 0
+offset_left = -205.0
+offset_top = -14.0
+offset_right = -197.0
+offset_bottom = -6.0
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 30
+
+[node name="Option3" type="Button" parent="."]
+layout_mode = 0
+offset_left = -208.0
+offset_top = 54.0
+offset_right = -200.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 30
+
+[node name="Option4" type="Button" parent="."]
+layout_mode = 0
+offset_left = -212.0
+offset_top = 143.0
+offset_right = -204.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 30
+
+[node name="next" type="Button" parent="."]
+layout_mode = 0
+offset_left = -106.0
+offset_top = 213.0
+offset_right = 24.0
+offset_bottom = 275.0
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 30
+text = "Next
+"
+
+[node name="FeedbackLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -64.0
+offset_top = 132.0
+offset_right = -24.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("2_psek3")
+theme_override_font_sizes/font_size = 40
+
+[node name="CorrectAnswer" parent="." instance=ExtResource("4_qems5")]
+position = Vector2(-110, 41)
+
+[node name="wronganswer" parent="." instance=ExtResource("5_n24ut")]
+position = Vector2(-128, 101)
+
+[node name="coin" parent="." instance=ExtResource("6_cf80e")]
+position = Vector2(573, -312)
+scale = Vector2(0.152806, 0.148798)
+
+[node name="quiz_result" parent="." instance=ExtResource("7_qems5")]
+
+[connection signal="pressed" from="Option1" to="." method="_on_Option1_pressed"]
+[connection signal="pressed" from="Option2" to="." method="_on_Option2_pressed"]
+[connection signal="pressed" from="Option3" to="." method="_on_Option3_pressed"]
+[connection signal="pressed" from="Option4" to="." method="_on_Option4_pressed"]
+[connection signal="pressed" from="next" to="." method="_on_NextButton_pressed"]
